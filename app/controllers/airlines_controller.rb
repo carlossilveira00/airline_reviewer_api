@@ -1,6 +1,4 @@
-module Api
-  module V1
-    class AirlinesController < ApplicationController
+class AirlinesController < ApplicationController
       def index
         @airlines = Airline.all
 
@@ -8,13 +6,13 @@ module Api
       end
 
       def show
-        @airline = Airline.findy_by(slug: params[:slug])
+        @airline = Airline.find_by(slug: params[:slug])
 
         render json: @airline
       end
 
       def create
-        @airline = Arline.new(airline_params)
+        @airline = Airline.new(airline_params)
 
         if @airline.save
           render json: @airline
@@ -49,5 +47,3 @@ module Api
         params.require(:airline).permit(:name, :image_url)
       end
     end
-  end
-end
