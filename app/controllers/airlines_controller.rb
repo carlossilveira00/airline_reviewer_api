@@ -22,7 +22,7 @@ class AirlinesController < ApplicationController
       end
 
       def update
-        @airline = Airline.findy_by(slug: params[:slug])
+        @airline = Airline.find_by(slug: params[:slug])
 
         if @airline.update(airline_params)
           render json: @airline
@@ -32,7 +32,7 @@ class AirlinesController < ApplicationController
       end
 
       def destroy
-        @airline = Airline.findy_by(slug: params[:slug])
+        @airline = Airline.find_by(slug: params[:slug])
 
         if @airline.destroy
           head :no_content
